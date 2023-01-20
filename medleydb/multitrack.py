@@ -7,6 +7,7 @@ from __future__ import print_function
 import csv
 import os
 import sox
+import librosa
 import yaml
 
 from . import INST_TAXONOMY
@@ -280,8 +281,11 @@ class MultiTrack(object):
         """
         if self._duration is None:
             if self.mix_path is not None and os.path.exists(self.mix_path):
-                self._duration = get_duration(self.mix_path)
-
+                try:
+                    self._duration = get_duration(self.mix_path)
+                except Exception as e:
+                    print(f"{e}\n Cannot get duration with sox, using librosa instead.")
+                    self._duration = librosa.get_duration(filename=self.mix_path)
         return self._duration
 
     @property
@@ -751,7 +755,12 @@ class Track(object):
         """
         if self._duration is None:
             if self.audio_path is not None and os.path.exists(self.audio_path):
-                self._duration = get_duration(self.audio_path)
+                try:
+                    self._duration = get_duration(self.audio_path)
+                except Exception as e:
+                    print(f"{e}\n Cannot get duration with sox, using librosa instead.")
+                    self._duration = librosa.get_duration(filename=self.audio_path)
+                    
         return self._duration
 
     @property
