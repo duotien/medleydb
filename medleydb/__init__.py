@@ -15,6 +15,11 @@ __all__ = ["__version__"]
 
 logging.basicConfig(level=logging.CRITICAL)
 
+# ADD medleydb src path into environment variable
+SRC_PATH = path.dirname(__file__)
+MEDLEYDB_AUDIO_PATH = path.join(SRC_PATH, 'data/')
+environ['MEDLEYDB_PATH'] = MEDLEYDB_AUDIO_PATH
+
 if "MEDLEYDB_PATH" in environ and path.exists(environ["MEDLEYDB_PATH"]):
     MEDLEYDB_PATH = environ["MEDLEYDB_PATH"]
     AUDIO_AVAILABLE = True
