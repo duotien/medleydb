@@ -11,7 +11,7 @@ from medleydb import METADATA_PATH
 
 def add_version(fpath):
     with open(fpath, 'r') as fhandle:
-        data = yaml.load(fhandle)
+        data = yaml.load(fhandle, Loader=yaml.FullLoader)
 
     if 'version' not in data.keys():
         data['version'] = 1.2
@@ -21,7 +21,7 @@ def add_version(fpath):
 
 def remove_release_date(fpath):
     with open(fpath, 'r') as fhandle:
-        data = yaml.load(fhandle)
+        data = yaml.load(fhandle, Loader=yaml.FullLoader)
 
     if 'release date' in data.keys():
         data.pop('release date', None)

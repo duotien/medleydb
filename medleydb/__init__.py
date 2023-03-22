@@ -66,7 +66,7 @@ TRACK_LIST_BACH10 = read_tracklist('tracklist_bach10.txt')
 
 with open(path.join(path.dirname(__file__), 'resources',
                     'taxonomy.yaml'), 'r') as fhandle:
-    INST_TAXONOMY = yaml.load(fhandle)
+    INST_TAXONOMY = yaml.load(fhandle, Loader=yaml.FullLoader)
 
 with open(path.join(path.dirname(__file__), 'resources',
                     'instrument_f0_type.json'), 'r') as fhandle:
@@ -74,7 +74,7 @@ with open(path.join(path.dirname(__file__), 'resources',
 
 with open(path.join(path.dirname(__file__), 'resources',
                     'mixing_coefficients_version2.yaml'), 'r') as fhandle:
-    MIXING_COEFFICIENTS = yaml.load(fhandle)
+    MIXING_COEFFICIENTS = yaml.load(fhandle, Loader=yaml.FullLoader)
 
 with open(path.join(path.dirname(__file__), 'resources',
                     'artist_index.json'), 'r') as fhandle:

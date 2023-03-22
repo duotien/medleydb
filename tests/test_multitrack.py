@@ -468,7 +468,7 @@ class TestGetValidInstrumentLabels(unittest.TestCase):
         test_taxonomy_fpath = os.path.join(
             os.path.dirname(__file__), 'data/test_taxonomy.yaml')
         with open(test_taxonomy_fpath, 'r') as fhandle:
-            self.test_taxonomy = yaml.load(fhandle)
+            self.test_taxonomy = yaml.load(fhandle, Loader=yaml.FullLoader)
 
     def test_inclusion(self):
         self.assertTrue('female singer' in self.labels)

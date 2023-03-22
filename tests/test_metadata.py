@@ -32,7 +32,7 @@ class TestFileNames(unittest.TestCase):
     def test_metadata(self):
         for fpath in glob.glob(os.path.join(METADATA_PATH, '*.yaml')):
             with open(fpath, 'r') as f_in:
-                metadata = yaml.load(f_in)
+                metadata = yaml.load(f_in, Loader=yaml.FullLoader)
             actual_keys = sorted(metadata.keys())
             self.assertEqual(self.expected_keys, actual_keys)
             self.assertEqual(self.expected_version, metadata['version'])

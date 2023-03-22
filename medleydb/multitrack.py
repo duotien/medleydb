@@ -368,7 +368,7 @@ class MultiTrack(object):
 
         """
         with open(self._meta_path, 'r') as f_in:
-            metadata = yaml.load(f_in)
+            metadata = yaml.load(f_in, Loader=yaml.FullLoader)
         return metadata
 
     def _parse_metadata(self):
